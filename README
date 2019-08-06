@@ -10,4 +10,4 @@ NOTE:
 2. Selenium tests has been implemented with PageObject design pattern
 3. The test called "test_getDealsForToday" is implemented such that it fails if there are no records found in the table
 4. Additinal test called "test_getDealsLastMonth" has been written since no records were found for the desired test "test_getDealsForToday" 
-5. The xls file will be saved for the test mentioned at point 4 inside the target folder
+5. The xls file will be saved for the test mentioned at point 4 inside the projeect folder
