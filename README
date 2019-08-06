@@ -3,7 +3,7 @@ Test Framework Components: Java 1.8 + Maven + TestNg + Allure
 Steps to execute tests:
 1. Download zip, unpack, 
 2. In command prompt open project locaion and run command "mvn clean test"
-3. After the test execution is finished, run command "mvn allure:serve" - The report will be open in your local browser
+3. After the test execution is finished, run command "mvn allure:serve" - The report will be opened in your local browser
 
 NOTE:
 1. You need Java 1.8
