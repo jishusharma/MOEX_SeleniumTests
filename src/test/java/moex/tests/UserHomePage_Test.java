@@ -38,7 +38,7 @@ public class UserHomePage_Test extends AutomationBaseClass {
 
     //This test has been additionally written as the current date test was not fetching any results to assert for
     @org.testng.annotations.Test(priority = 5)
-    public void c_test_getDealsLastMonth() throws ParseException {
+    public void test_getDealsLastMonth() throws ParseException {
         LocalDateTime date = LocalDateTime.now();
         LocalDateTime startDate = LocalDateTime.of(date.getYear(), date.getMonth().minus(1), date.getDayOfMonth(), 00, 00, 00);
         LocalDateTime endDate = LocalDateTime.of(date.getYear(), date.getMonth(), date.getDayOfMonth(), 23, 59, 59);
