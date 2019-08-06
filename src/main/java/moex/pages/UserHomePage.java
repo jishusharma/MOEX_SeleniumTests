@@ -93,7 +93,8 @@ public class UserHomePage extends BasePageClass {
             return false;
     }
 
-    public void saveFile(){
+    public void saveFile() throws InterruptedException {
         saveFile.click();
+        Thread.sleep(2000);
     }
 }
