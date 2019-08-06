@@ -17,7 +17,7 @@ public class LoginPage_Test extends AutomationBaseClass {
     }
 
     @org.testng.annotations.Test(priority = 1)
-    public void b_test_incorrect_login() {
+    public void test_incorrect_login() {
         Assert.assertTrue(true);
         loginPage.goToLoginPage();
         loginPage.loginToApplication(loginPage.username, loginPage.incorrectPassword);
@@ -26,7 +26,7 @@ public class LoginPage_Test extends AutomationBaseClass {
     }
 
     @org.testng.annotations.Test(priority = 2)
-    public void a_test_correct_login() {
+    public void test_correct_login() {
         Assert.assertTrue(true);
         loginPage.goToLoginPage();
         userHomePage = loginPage.loginWithCorrectCredentials(loginPage.username, loginPage.password);
