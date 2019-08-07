@@ -7,7 +7,8 @@ Steps to execute tests:
 
 NOTE:
 1. You need Java 1.8
-2. Selenium tests has been implemented with PageObject design pattern
-3. The test called "test_getDealsForToday" is implemented such that it fails if there are no records found in the table
-4. Additional test called "test_getDealsLastMonth" has been written since no records were found for the desired test "test_getDealsForToday"
-5. The xls file will be saved for the test mentioned at point 4 inside the project folder
+2. Google chrome current version 76 used with corresponding chrome driver version 76
+3. Selenium tests has been implemented with PageObject design pattern
+4. The test called "test_getDealsForToday" is implemented such that it fails if there are no records found in the table
+5. Additional test called "test_getDealsLastMonth" has been written since no records were found for the desired test "test_getDealsForToday"
+6. The xls file will be saved for the test mentioned at point 4 inside the project folder
