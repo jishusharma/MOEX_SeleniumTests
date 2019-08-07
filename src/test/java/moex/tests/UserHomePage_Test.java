@@ -4,12 +4,15 @@ import moex.AutomationBaseClass;
 import moex.pages.LoginPage;
 import moex.pages.UserHomePage;
 import org.testng.Assert;
+
+import java.io.*;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 
 public class UserHomePage_Test extends AutomationBaseClass {
     private static LoginPage loginPage;
     private static UserHomePage userHomePage;
+    private static final String LIST_DEALS_FILENAME = "list_deals.csv";
 
     @org.testng.annotations.BeforeMethod
     public void init() {
@@ -19,39 +22,66 @@ public class UserHomePage_Test extends AutomationBaseClass {
     @org.testng.annotations.Test(priority = 3)
     public void test_switchToWorkStation() {
         loginPage.goToLoginPage();
-        userHomePage = loginPage.loginWithCorrectCredentials(loginPage.username, loginPage.password);
-        WaitForElementToAppear(userHomePage.userImage);
+        userHomePage = loginPage.loginWithCorrectCredentials(LoginPage.username, LoginPage.password);
+        WaitForElementToAppear(UserHomePage.userImage);
         userHomePage.switchToWorkStation();
-        Assert.assertTrue(userHomePage.traderCombobox.isDisplayed(),"Trader not displayed!");
+        Assert.assertTrue(UserHomePage.traderCombobox.isDisplayed(),"Trader not displayed!");
 
     }
 
     //This test will fail if no records are found for the current date
     @org.testng.annotations.Test(priority = 4)
-    public void test_getDealsForToday() throws ParseException {
+    public void test_getDealsForToday() throws ParseException, InterruptedException {
         LocalDateTime date = LocalDateTime.now();
-        LocalDateTime startDate = LocalDateTime.of(date.getYear(), date.getMonth(), date.getDayOfMonth(), 00, 00, 00);
+        LocalDateTime startDate = LocalDateTime.of(date.getYear(), date.getMonth(), date.getDayOfMonth(), 0, 0, 0);
         LocalDateTime endDate = LocalDateTime.of(date.getYear(), date.getMonth(), date.getDayOfMonth(), 23, 59, 59);
         getDeals(startDate, endDate);
         Assert.assertTrue(userHomePage.doesTableHasRows());
+        userHomePage.saveFile();
+        checkListDealsFile();
     }
 
     //This test has been additionally written as the current date test was not fetching any results to assert for
     @org.testng.annotations.Test(priority = 5)
     public void test_getDealsLastMonth() throws ParseException, InterruptedException {
         LocalDateTime date = LocalDateTime.now();
-        LocalDateTime startDate = LocalDateTime.of(date.getYear(), date.getMonth().minus(1), date.getDayOfMonth(), 00, 00, 00);
+        LocalDateTime startDate = LocalDateTime.of(date.getYear(), date.getMonth().minus(1), date.getDayOfMonth(), 0, 0, 0);
         LocalDateTime endDate = LocalDateTime.of(date.getYear(), date.getMonth(), date.getDayOfMonth(), 23, 59, 59);
         getDeals(startDate, endDate);
         Assert.assertTrue(userHomePage.doesTableHasRows());
         userHomePage.saveFile();
+        checkListDealsFile();
     }
 
-    private void getDeals(LocalDateTime startDate, LocalDateTime endDate) throws ParseException {
+    private void getDeals(LocalDateTime startDate, LocalDateTime endDate) {
         loginPage.goToLoginPage();
-        userHomePage = loginPage.loginWithCorrectCredentials(loginPage.username, loginPage.password);
-        WaitForElementToAppear(userHomePage.userImage);
+        userHomePage = loginPage.loginWithCorrectCredentials(LoginPage.username, LoginPage.password);
+        WaitForElementToAppear(UserHomePage.userImage);
         userHomePage.switchToWorkStation();
         userHomePage.getDealsForDateRange(startDate, endDate);
+    }
+
+    private void checkListDealsFile() {
+        File listDeal = getListDealsFile();
+        Assert.assertTrue(doesFileHasRows(listDeal));
+        Assert.assertTrue(listDeal.delete());
+    }
+
+    private File getListDealsFile() {
+        return new File(LIST_DEALS_FILENAME);
+    }
+
+    private boolean doesFileHasRows(File file) {
+        int headerLines = 2;
+        int lines = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while (reader.readLine() != null && lines <= headerLines) {
+                lines++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lines > headerLines;
     }
 }

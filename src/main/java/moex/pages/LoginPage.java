@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePageClass {
 
-    public static String username = "test08";
-    public static String password = "1q2w3e4r";
-    public static String incorrectPassword = "incorrect";
+    public static final String username = "test08";
+    public static final String password = "1q2w3e4r";
+    public static final String incorrectPassword = "incorrect";
 
     @FindBy(xpath = "//div[@class='z-logo']")
     public static WebElement zLogo;

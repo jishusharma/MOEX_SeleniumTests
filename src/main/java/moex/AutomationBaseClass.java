@@ -55,7 +55,6 @@ public class AutomationBaseClass {
     }
 
     public static WebDriver getDriver() {
-        WebDriver finalDriver = driver;
-        return finalDriver;
+        return driver;
     }
 }

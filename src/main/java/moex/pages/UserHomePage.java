@@ -41,7 +41,7 @@ public class UserHomePage extends BasePageClass {
     @FindBy(xpath = "//tbody[1]/tr[1]/td[2]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[1]/td[7]/span[1]/input[1]")
     public static WebElement dateTo;
 
-    @FindBy(xpath = "//a[1]/span[1]/img[1]")
+    @FindBy(xpath = "//a[1][span[1]/img[1]]")
     public static WebElement refreshImage;
 
     @FindBy(xpath = "//div[1]/div[2]/div[3]/table[1]/tbody[1]")
@@ -62,7 +62,7 @@ public class UserHomePage extends BasePageClass {
         trader.click();
     }
 
-    public void getDealsForDateRange(LocalDateTime startDate, LocalDateTime endDate) throws ParseException {
+    public void getDealsForDateRange(LocalDateTime startDate, LocalDateTime endDate) {
         try {
             marketImageWithClosedMenu.click();
         } catch (Exception e) {
@@ -87,10 +87,7 @@ public class UserHomePage extends BasePageClass {
     public boolean doesTableHasRows() {
         List<WebElement> tableRows = driver.findElements(By.xpath("//div[1]/div[2]/div[3]/table[1]/tbody[1]/tr"));
         System.out.println("Number of records in the table: " + tableRows.size());
-        if (tableRows.size() > 0)
-            return true;
-        else
-            return false;
+        return tableRows.size() > 0;
     }
 
     public void saveFile() throws InterruptedException {
