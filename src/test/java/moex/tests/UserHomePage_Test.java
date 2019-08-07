@@ -18,6 +18,7 @@ public class UserHomePage_Test extends AutomationBaseClass {
     @org.testng.annotations.BeforeMethod
     public void init() {
         loginPage = new LoginPage(getDriver());
+        getListDealsFile().delete();
     }
 
     @org.testng.annotations.Test(priority = 3)
@@ -61,13 +62,7 @@ public class UserHomePage_Test extends AutomationBaseClass {
     private void checkDeals() throws InterruptedException {
         Assert.assertTrue(userHomePage.doesTableHasRows());
         userHomePage.saveFile();
-        checkListDealsFile();
-    }
-
-    private void checkListDealsFile() {
-        File listDeal = getListDealsFile();
-        Assert.assertTrue(doesFileHasRows(listDeal));
-        Assert.assertTrue(listDeal.delete());
+        Assert.assertTrue(doesFileHasRows(getListDealsFile()));
     }
 
     private File getListDealsFile() {
