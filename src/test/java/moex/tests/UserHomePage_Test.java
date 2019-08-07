@@ -60,9 +60,9 @@ public class UserHomePage_Test extends AutomationBaseClass {
     }
 
     private void checkDeals() throws InterruptedException {
-        Assert.assertTrue(userHomePage.doesTableHasRows());
+        Assert.assertTrue(userHomePage.doesTableHasRows(), "Empty table");
         userHomePage.saveFile();
-        Assert.assertTrue(doesFileHasRows(getListDealsFile()));
+        Assert.assertTrue(doesFileHasRows(getListDealsFile()), "Empty the list deal file");
     }
 
     private File getListDealsFile() {
