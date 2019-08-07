@@ -1,5 +1,6 @@
 package moex.tests;
 
+import io.qameta.allure.Step;
 import moex.AutomationBaseClass;
 import moex.pages.LoginPage;
 import moex.pages.UserHomePage;
@@ -51,6 +52,7 @@ public class UserHomePage_Test extends AutomationBaseClass {
         checkDeals();
     }
 
+    @Step("Get deals from {startDate} to {endDate}")
     private void getDeals(LocalDateTime startDate, LocalDateTime endDate) {
         loginPage.goToLoginPage();
         userHomePage = loginPage.loginWithCorrectCredentials(LoginPage.username, LoginPage.password);
@@ -59,6 +61,7 @@ public class UserHomePage_Test extends AutomationBaseClass {
         userHomePage.getDealsForDateRange(startDate, endDate);
     }
 
+    @Step("Check deals not empty; Check export not empty")
     private void checkDeals() throws InterruptedException {
         Assert.assertTrue(userHomePage.doesTableHasRows(), "Empty table");
         userHomePage.saveFile();
