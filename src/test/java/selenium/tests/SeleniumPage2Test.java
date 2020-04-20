@@ -1,7 +1,7 @@
-package moex.tests;
+package selenium.tests;
 
-import moex.AutomationBaseClass;
-import moex.pages.SeleniumPage;
+import selenium.AutomationBaseClass;
+import selenium.pages.SeleniumPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
