@@ -1,3 +1,1 @@
-Steps to execute tests:
-1. Download zip, unpack, 
-2. In command prompt open project location and run command "mvn clean test"
+mvn clean test
