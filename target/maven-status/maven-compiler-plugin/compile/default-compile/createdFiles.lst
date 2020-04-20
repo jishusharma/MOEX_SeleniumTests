@@ -1,3 +1,3 @@
-moex\pages\SeleniumPage.class
-moex\BasePageClass.class
-moex\AutomationBaseClass.class
+selenium\BasePageClass.class
+selenium\pages\SeleniumPage.class
+selenium\AutomationBaseClass.class

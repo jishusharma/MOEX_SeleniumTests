@@ -1,2 +1,2 @@
-moex\tests\SeleniumPage1Test.class
-moex\tests\SeleniumPage2Test.class
+selenium\tests\SeleniumPage1Test.class
+selenium\tests\SeleniumPage2Test.class
