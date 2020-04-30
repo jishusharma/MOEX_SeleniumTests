@@ -23,6 +23,12 @@
             <artifactId>testng</artifactId>
             <version>7.0.0-beta3</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
     </dependencies>
     <build>
