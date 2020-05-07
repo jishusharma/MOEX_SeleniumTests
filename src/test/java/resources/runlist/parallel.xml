@@ -1,4 +1,9 @@
 <suite name="parallelSuite" parallel="classes" thread-count="4">
+    <test name="CommonSuite">
+        <classes>
+            <class name="CommonSuite"/>
+        </classes>
+    </test>
     <test name="test suite">
         <classes>
             <class name="Test1"/>

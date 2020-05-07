@@ -1,43 +1,19 @@
-import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import com.aventstack.extentreports.reporter.ExtentLoggerReporter;
-import com.aventstack.extentreports.reporter.ExtentReporter;
-import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import selenium.sync.SyncClass;
 
 public class Test1 {
-    static ExtentLoggerReporter htmlReporter;
-    static ExtentReports extent;
-    static ExtentTest logger;
-
-    @BeforeClass
-    public static void startTest()
-    {
-        htmlReporter = new ExtentLoggerReporter(System.getProperty("user.dir") +"/test-output/test1/");
-        extent = new ExtentReports ();
-        extent.attachReporter(htmlReporter);
-        /*extent.setSystemInfo("Host Name", "SoftwareTestingMaterial");
-        extent.setSystemInfo("Environment", "Automation Testing");
-        extent.setSystemInfo("User Name", "Rajkumar SM");
-
-        htmlReporter.config().setDocumentTitle("Title of the Report Comes here");
-        htmlReporter.config().setReportName("Name of the Report Comes here"); */
-        htmlReporter.config().setTheme(Theme.STANDARD);
-    }
+    private ExtentTest logger;
     
     @Test
     public void test1() {
-        logger = extent.createTest("passTest");
+        logger = CommonSuite.extent.createTest("passTest");
         System.out.println("Test 1 assertions 1");
         Assert.assertEquals("assert1ForTest1", "assert1ForTest1");
         logger.log(Status.PASS, "Test 1 assertions 1");
@@ -60,12 +36,6 @@ public class Test1 {
             //logger.log(Status.SKIP, "Test Case Skipped is "+result.getName());
             logger.log(Status.SKIP, MarkupHelper.createLabel(result.getName() + " - Test Case Skipped", ExtentColor.ORANGE));
         }
-    }
-
-    @AfterClass
-    public static void endTest()
-    {
-        extent.flush();
     }
 
 }
