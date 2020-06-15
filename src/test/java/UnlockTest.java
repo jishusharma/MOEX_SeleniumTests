@@ -9,7 +9,7 @@ public class UnlockTest {
     @Test
     public void unlockTest() throws InterruptedException {
         logger = CommonSuite.extent.createTest("passTest");
-        Thread.sleep(5000);
+        Thread.sleep(30000);
 
         System.out.println("Call notify from other thread");
         logger.log(Status.PASS, "Call notify from other thread");

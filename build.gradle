@@ -40,4 +40,5 @@ test {
     useTestNG() {
         suites "src/test/java/resources/runlist/parallel.xml"
     }
+    useTestNG() {}
 }
